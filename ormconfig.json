@@ -1,0 +1,18 @@
+// {
+//     "type": "oracle",
+//     "host": "localhost",
+//     "port": 1521,
+//     "username": "tu_usuario",
+//     "password": "tu_contraseña",
+//     "sid": "tu_sid",    // En Oracle, utilizamos el SID (Service Identifier) en lugar del nombre de la base de datos.
+//     "entities": ["dist/**/*.entity{.ts,.js}"],
+//     "synchronize": true
+//   }
+  
+  {
+    "type": "sqlite",
+    "database": "data/db.sqlite",  // Ruta de tu base de datos SQLite
+    "entities": ["dist/**/*.entity{.ts,.js}"],
+    "synchronize": true
+  }
+  
