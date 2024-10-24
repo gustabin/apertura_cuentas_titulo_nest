@@ -1,35 +1,46 @@
 import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
+import { AuthService } from './modules/auth/auth.service';
+import { AuthController } from './modules/auth/auth.controller';
+import { JwtStrategy } from './modules/auth/jwt.strategy';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CuentasTitulosModule } from './modules/cuentas-titulos/cuentas-titulos.module';
+import { MockDataModule } from './modules/mock-data/mock-data.module';
 import { EnriModule } from './modules/enri/enri.module';
 import { JobsModule } from './modules/jobs/jobs.module';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { DatabaseModule } from './../data/database.module';  // Si tienes alguna lógica de conexión extra
+import { AuthModule } from './modules/auth/auth.module';
+import { UsersModule } from './modules/users/users.module';
+
 
 @Module({
+  // imports: [
+  //   TypeOrmModule.forRoot(),
+  //   CuentasTitulosModule,
+  //   EnriModule,
+  //   JobsModule,
+  // ],
   imports: [
     TypeOrmModule.forRoot({
-      type: 'oracle',  // Tipo de base de datos
-      host: 'adldsorcldesa.ar.bsch',  // Dirección del host
-      port: 1521,  // Puerto por defecto de Oracle
-      sid: 'srv_RIO181H_ap',  // El SID de tu base de datos Oracle
-      username: 'tu_usuario',  // Usuario de la base de datos Oracle
-      password: 'tu_contraseña',  // Contraseña del usuario
-      synchronize: true,  // Cambia esto a false en producción para evitar cambios automáticos en la DB
-      logging: true,  // Habilita el log para ver las consultas realizadas
-      entities: [
-        // Aquí debes listar todas las entidades que utilizarás
-        // Ejemplo:
-        // TuEntidad,
-      ],
+      type: 'sqlite',
+      database: 'data/db.sqlite',  // La ruta de tu base de datos SQLite
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,  // Sincronizar el esquema automáticamente
     }),
-    DatabaseModule,  // Si tienes alguna lógica de conexión extra (por ejemplo, para gestionar la conexión de alguna otra manera)
     CuentasTitulosModule,
     EnriModule,
     JobsModule,
+    MockDataModule,
+    AuthModule,
+    UsersModule,
+    PassportModule,
+    JwtModule.register({
+      secret: 'your-secret-key', // Cambia esta clave secreta por una real
+      signOptions: { expiresIn: '1h' },
+    }),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, AuthController],
+  providers: [AuthService, JwtStrategy],
 })
 export class AppModule { }

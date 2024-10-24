@@ -1,12 +1,12 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('maps.MAPS_ADHESIONES')
+@Entity()
 export class CuentaTitulo {
     @PrimaryGeneratedColumn()
-    ID_ADHESIONES!: number;
+    id!: number;
 
     @Column()
-    NRO_CTA_OPER_ACT: string = ''; // Valor predeterminado
+    cuentaVinculada: string = ''; // Valor predeterminado
 
     @Column()
     email: string = ''; // Valor predeterminado
