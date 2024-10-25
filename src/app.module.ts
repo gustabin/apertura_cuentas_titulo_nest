@@ -13,6 +13,7 @@ import { AppController } from './app.controller';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { JwtDecodeModule } from './modules/jwt-decode/jwt-decode.module';
+import { ApigeeModule } from './modules/apigee/apigee.module';
 
 
 @Module({
@@ -36,6 +37,7 @@ import { JwtDecodeModule } from './modules/jwt-decode/jwt-decode.module';
     AuthModule,
     JwtDecodeModule,
     UsersModule,
+    ApigeeModule,
     PassportModule,
     JwtModule.register({
       secret: 'your-secret-key', // Cambia esta clave secreta por una real
