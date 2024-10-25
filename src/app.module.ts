@@ -12,6 +12,7 @@ import { JobsModule } from './modules/jobs/jobs.module';
 import { AppController } from './app.controller';
 import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
+import { JwtDecodeModule } from './modules/jwt-decode/jwt-decode.module';
 
 
 @Module({
@@ -33,6 +34,7 @@ import { UsersModule } from './modules/users/users.module';
     JobsModule,
     MockDataModule,
     AuthModule,
+    JwtDecodeModule,
     UsersModule,
     PassportModule,
     JwtModule.register({
