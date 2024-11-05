@@ -14,6 +14,8 @@ import { AuthModule } from './modules/auth/auth.module';
 import { UsersModule } from './modules/users/users.module';
 import { JwtDecodeModule } from './modules/jwt-decode/jwt-decode.module';
 import { ApigeeModule } from './modules/apigee/apigee.module';
+import { OperativeAccountsModule } from './modules/operative-accounts/operative-accounts.module';
+import { ContractsModule } from './modules/contracts/contracts.module';
 
 
 @Module({
@@ -39,6 +41,8 @@ import { ApigeeModule } from './modules/apigee/apigee.module';
     UsersModule,
     ApigeeModule,
     PassportModule,
+    OperativeAccountsModule,
+    ContractsModule,
     JwtModule.register({
       secret: 'your-secret-key', // Cambia esta clave secreta por una real
       signOptions: { expiresIn: '1h' },
