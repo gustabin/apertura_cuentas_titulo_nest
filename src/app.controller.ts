@@ -6,4 +6,7 @@ export class AppController {
   getRoot(): string {
     return 'API de Apertura de Cuentas Títulos está corriendo.';
   }
+  getHello(): string {
+    return 'Hello World!';
+  }
 }

@@ -7,7 +7,7 @@ export class ContractsService {
         const config = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: 'http://localhost/api-employees/contracts',
+            url: 'https://stackcodelab.com/api-employees/contracts',
             headers: {
                 'Authorization': 'Bearer your_secret_token'
             }
